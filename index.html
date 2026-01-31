@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open 💌</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #e6ccff, #ffd6e8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    /* POSTCARD */
+    .card {
+        width: 320px;
+        height: 420px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        position: relative;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+    }
+
+    .card.open {
+        transform: rotateY(180deg);
+    }
+
+    .side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        padding: 25px;
+        box-sizing: border-box;
+    }
+
+    /* FRONT */
+    .front {
+        background: linear-gradient(135deg, #d9b3ff, #ffb3d9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .stamp {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border: 2px dashed #ff4d6d;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        color: #ff4d6d;
+    }
+
+    .open-text {
+        font-size: 36px;
+        color: #6a1b9a;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    /* INSIDE */
+    .inside {
+        background: #fff;
+        transform: rotateY(180deg);
+        text-align: center;
+    }
+
+    .message {
+        font-size: 16px;
+        color: #555;
+        margin-top: 40px;
+        line-height: 1.6;
+    }
+
+    .question {
+        margin-top: 25px;
+        font-size: 20px;
+        color: #8e24aa;
+        font-weight: bold;
+    }
+
+    button {
+        margin: 15px 10px;
+        padding: 10px 22px;
+        font-size: 16px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #no {
+        background: #ddd;
+        position: absolute;
+    }
+
+    /* 📱 MOBILE POLISH */
+    @media (max-width: 600px) {
+        .card {
+            width: 90vw;
+            height: 70vh;
+        }
+        .open-text {
+            font-size: 30px;
+        }
+        .message {
+            font-size: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card" onclick="openCard()">
+
+    <!-- FRONT -->
+    <div class="side front">
+        <div class="stamp">💌</div>
+        <div class="open-text">OPEN</div>
+    </div>
+
+    <!-- INSIDE -->
+    <div class="side inside">
+        <div class="message">
+            <!-- ✨ TYPE YOUR PRIVATE MESSAGE BELOW ✨ -->
+
+            Type your message here 💜  
+            <br><br>
+            You can write anything you want.  
+            Emojis, feelings, lines, everything.
+
+            <!-- ✨ END OF MESSAGE ✨ -->
+        </div>
+
+        <div class="question">
+            Will you be my Valentine? 💖
+        </div>
+
+        <button id="yes" onclick="yesClicked(event)">YES 💕</button>
+        <button id="no" onmouseover="moveNo()">NO 😈</button>
+    </div>
+
+</div>
+
+<script>
+    function openCard() {
+        document.getElementById("card").classList.add("open");
+    }
+
+    function yesClicked(e) {
+        e.stopPropagation();
+        alert("YAYYYY 💘💘 You just made my heart so happy!");
+    }
+
+    function moveNo() {
+        const noBtn = document.getElementById("no");
+        noBtn.style.left = Math.random() * 200 + "px";
+        noBtn.style.top = Math.random() * 300 + "px";
+    }
+</script>
+
+</body>
+</html>
