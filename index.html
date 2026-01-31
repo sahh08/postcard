@@ -42,7 +42,7 @@ body {
     clip-path: polygon(0 0, 100% 0, 50% 65%);
 }
 
-/* OPEN BUTTON */
+/* OPEN TEXT */
 .open-text {
     background: white;
     padding: 14px 28px;
@@ -80,13 +80,17 @@ body {
     color: #ff4d6d;
 }
 
-/* MESSAGE TEXT */
+/* LETTER MESSAGE */
 .message {
-    margin-top: 80px;
+    margin-top: 90px;
     font-size: 18px;
     color: #555;
     line-height: 1.9;
     text-align: left;
+
+    border: 2px dashed #ff4d6d;
+    border-radius: 14px;
+    padding: 22px;
 }
 
 /* QUESTION */
@@ -102,7 +106,7 @@ body {
 .buttons {
     margin-top: 35px;
     position: relative;
-    height: 60px;
+    height: 90px;
 }
 
 /* BUTTONS */
@@ -122,7 +126,7 @@ button {
 #no {
     background: #ddd;
     position: absolute;
-    left: 190px;
+    left: 220px;
     top: 0;
 }
 
@@ -132,10 +136,6 @@ button {
     .card,
     .envelope {
         width: 95vw;
-    }
-
-    #no {
-        left: 160px;
     }
 }
 </style>
@@ -167,7 +167,7 @@ button {
             <br>
             I can’t wait for the day
             distance is just a memory lol
-            <br>
+            <br><br>
             Through the days are getting harder,
             I’m grateful that it’s you, and it’s for us!
             <br><br>
@@ -175,7 +175,7 @@ button {
         </div>
 
         <div class="question">
-            Will you be my Valentine? 👀❤️
+            Will you be my Valentine?👀❤️
         </div>
 
         <div class="buttons">
@@ -198,7 +198,16 @@ function goToYesPage() {
 
 function escapeNo() {
     const noBtn = document.getElementById("no");
-    noBtn.style.left = Math.random() * 220 + "px";
+    const area = document.querySelector(".buttons");
+
+    const maxX = area.clientWidth - noBtn.offsetWidth;
+    const maxY = area.clientHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 }
 </script>
 
