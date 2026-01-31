@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>POSTCARD💌</title>
+<title>POSTCARD 💌</title>
 
 <style>
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, #efd9ff, #ffd6e8);
     display: flex;
     justify-content: center;
@@ -17,7 +17,18 @@ body {
 
 /* SCENE */
 .scene {
-    perspective: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* WRAPPER */
+.wrapper {
+    position: relative;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ENVELOPE */
@@ -29,6 +40,7 @@ body {
     position: relative;
     box-shadow: 0 25px 45px rgba(0,0,0,0.25);
     cursor: pointer;
+    z-index: 3;
 }
 
 /* FLAP */
@@ -40,7 +52,7 @@ body {
     clip-path: polygon(0 0, 100% 0, 50% 65%);
     transform-origin: top;
     transition: transform 1.1s ease-in-out;
-    z-index: 3;
+    z-index: 4;
 }
 
 .envelope.open .flap {
@@ -67,24 +79,23 @@ body {
 /* CARD */
 .card {
     width: 380px;
-    height: 500px;
     background: white;
     border-radius: 22px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 40%) scale(0.85);
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: -40px;
     padding: 30px;
     box-sizing: border-box;
     text-align: center;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+    transition: all 1s ease;
     z-index: 1;
 }
 
 .envelope.open + .card {
-    transform: translate(-50%, -70%) scale(1);
     opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* STAMP */
@@ -105,7 +116,7 @@ body {
 
 /* MESSAGE */
 .message {
-    margin-top: 80px;
+    margin-top: 60px;
     font-size: 16px;
     color: #555;
     line-height: 1.7;
@@ -140,9 +151,12 @@ button {
 
 /* MOBILE */
 @media (max-width: 600px) {
-    .card {
+    .wrapper {
         width: 90vw;
-        height: auto;
+    }
+    .envelope,
+    .card {
+        width: 100%;
     }
 }
 </style>
@@ -151,41 +165,39 @@ button {
 <body>
 
 <div class="scene">
-    <div class="envelope" id="envelope" onclick="openEnvelope()">
-        <div class="flap"></div>
-        <div class="open-text">OPEN💌</div>
-    </div>
-
-    <div class="card">
-        <div class="stamp">💌</div>
-
-        <div class="message">
-            <!-- ✨ PAGE ONE MESSAGE ✨ -->
-            Hii love 💜  
-            <br><br>
-            I miss you :( 
-            <br>
-           Even with the distance,
-           you’ve become such an important part of my life!
-            <br><br>
-            I miss the things we haven’t even done yet,
-and all the little moments we’re saving for later🥺
-            <br><br>
-           I can’t wait for the day
-distance is just a memory lol
-            <br><br>
-Through the days are getting harder,
-I’m grateful that it’s you, and it's for us!
-            <br><br>
-So here’s me asking you from afar...
+    <div class="wrapper">
+        <div class="envelope" id="envelope" onclick="openEnvelope()">
+            <div class="flap"></div>
+            <div class="open-text"><button>OPEN💌</button></div>
         </div>
 
-        <div class="question">
-            Will you be my Valentine? 💖
-        </div>
+            <div class="message">
+                Hii love 💜  
+                <br><br>
+                I miss you :(  
+                <br>
+                Even with the distance,
+                you’ve become such an important part of my life!
+                <br><br>
+                I miss the things we haven’t even done yet,
+                and all the little moments we’re saving for later 🥺
+                <br><br>
+                I can’t wait for the day
+                distance is just a memory lol
+                <br><br>
+                Though the days are getting harder,
+                I’m grateful that it’s you, and it’s for US!
+                <br><br>
+                So here’s me asking you from afar...
+            </div>
 
-        <button id="yes" onclick="goToYesPage()">YES💕</button>
-        <button id="no" onmouseover="escapeNo()" ontouchstart="escapeNo()">NO🙊</button>
+            <div class="question">
+                Will you be my Valentine? 💖
+            </div>
+
+            <button id="yes" onclick="goToYesPage()">YES 💕</button>
+            <button id="no" onmouseover="escapeNo()" ontouchstart="escapeNo()">NO 🙊</button>
+        </div>
     </div>
 </div>
 
@@ -200,8 +212,8 @@ function goToYesPage() {
 
 function escapeNo() {
     const noBtn = document.getElementById("no");
-    noBtn.style.left = Math.random() * 200 + "px";
-    noBtn.style.top = Math.random() * 220 + "px";
+    noBtn.style.left = Math.random() * 220 + "px";
+    noBtn.style.top = Math.random() * 260 + "px";
 }
 </script>
 
