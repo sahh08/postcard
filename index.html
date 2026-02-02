@@ -15,7 +15,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* MAIN CONTAINER */
 .container {
     width: 460px;
 }
@@ -42,7 +41,6 @@ body {
     clip-path: polygon(0 0, 100% 0, 50% 65%);
 }
 
-/* OPEN TEXT */
 .open-text {
     background: white;
     padding: 14px 28px;
@@ -64,7 +62,6 @@ body {
     position: relative;
 }
 
-/* STAMP */
 .stamp {
     position: absolute;
     top: 20px;
@@ -80,7 +77,6 @@ body {
     color: #ff4d6d;
 }
 
-/* LETTER MESSAGE */
 .message {
     margin-top: 90px;
     font-size: 18px;
@@ -89,7 +85,6 @@ body {
     text-align: left;
 }
 
-/* QUESTION */
 .question {
     margin-top: 32px;
     font-size: 22px;
@@ -102,13 +97,13 @@ body {
 .buttons {
     margin-top: 35px;
     position: relative;
-    height: 160px;          /* bigger playground */
+    height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 24px; /* ✅ keeps NO beside YES initially */
 }
 
-/* BUTTONS */
 button {
     padding: 14px 32px;
     font-size: 17px;
@@ -125,12 +120,7 @@ button {
 
 #no {
     background: #ddd;
-    position: absolute;
-
-    /* ✅ START POSITION (VISIBLE) */
-    left: 55%;
-    top: 55%;
-    transform: translate(-50%, -50%);
+    z-index: 3;
 }
 
 /* MOBILE */
@@ -148,30 +138,27 @@ button {
 
 <div class="container">
 
-    <!-- ENVELOPE -->
     <div class="envelope" id="envelope" onclick="openCard()">
         <div class="open-text">OPEN 💌</div>
     </div>
 
-    <!-- CARD -->
     <div class="card" id="card">
         <div class="stamp">💌</div>
 
         <div class="message">
             Hii love 💜  
             <br><br>
-            FEBRUARY it is! Month of LOVE uhmmm
+            FEBRUARY it is! Month of LOVE uhmmm  
             <br>
-             I know we’ll not be able to celebrate this time,
-        and that’s okay (not really) 
-        <br>
-        We don’t need a special day
-        to celebrate what we have ig
-        <br>
-        For me and for you, the day will obviously be the day we meet :)
-       <br>
-        That will always be our best day fs!
-        
+            I know we’ll not be able to celebrate this time,
+            and that’s okay (not really)  
+            <br>
+            We don’t need a special day
+            to celebrate what we have ig  
+            <br>
+            For me and for you, the day will obviously be the day we meet :)  
+            <br>
+            That will always be our best day fs!
             <br><br>
             I miss the things we haven’t even done yet
             and all the little moments we’re saving for later 🥺
@@ -179,7 +166,7 @@ button {
             I can’t wait for the day
             distance is just a memory lol
             <br><br>
-            Through the days are getting harder,
+            Though the days are getting harder,
             I’m grateful that it’s you, and it’s for us!
             <br><br>
             So here’s me asking you from afar...
@@ -189,7 +176,7 @@ button {
             Will you be my Valentine? 👀❤️
         </div>
 
-        <div class="buttons">
+        <div class="buttons" id="btnArea">
             <button id="yes" onclick="goToYesPage()">YES 💕</button>
             <button id="no" onmouseover="escapeNo()" ontouchstart="escapeNo()">NO 🙊</button>
         </div>
@@ -207,10 +194,12 @@ function goToYesPage() {
     window.location.href = "yes.html";
 }
 
-/* NO BUTTON ESCAPES EVERYWHERE 😈 */
+/* NO BUTTON RUNS BUT STARTS BESIDE YES 😈 */
 function escapeNo() {
     const noBtn = document.getElementById("no");
-    const area = document.querySelector(".buttons");
+    const area = document.getElementById("btnArea");
+
+    noBtn.style.position = "absolute";
 
     const padding = 10;
     const maxX = area.clientWidth - noBtn.offsetWidth - padding;
@@ -221,7 +210,6 @@ function escapeNo() {
 
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
-    noBtn.style.transform = "none";
 }
 </script>
 
