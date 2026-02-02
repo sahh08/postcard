@@ -80,33 +80,34 @@ body {
     color: #ff4d6d;
 }
 
-/* LETTER MESSAGE */
+/* LETTER MESSAGE (NO BORDER NOW) */
 .message {
     margin-top: 90px;
     font-size: 18px;
     color: #555;
     line-height: 1.9;
     text-align: left;
-
-    border: 2px dashed #ff4d6d;
-    border-radius: 14px;
-    padding: 22px;
+    padding: 0;
+    border: none;
 }
 
-/* QUESTION */
+/* QUESTION (CENTERED) */
 .question {
     margin-top: 32px;
     font-size: 22px;
     color: #8e24aa;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
 }
 
-/* BUTTON AREA */
+/* BUTTON AREA (CENTERED + BIGGER AREA) */
 .buttons {
     margin-top: 35px;
     position: relative;
-    height: 90px;
+    height: 140px;          /* bigger playground */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* BUTTONS */
@@ -121,13 +122,12 @@ button {
 #yes {
     background: #ff4d6d;
     color: white;
+    z-index: 2;
 }
 
 #no {
     background: #ddd;
     position: absolute;
-    left: 220px;
-    top: 0;
 }
 
 /* MOBILE */
@@ -162,8 +162,8 @@ button {
             Even with the distance,
             you’ve become such an important part of my life!
             <br><br>
-            I miss the things we haven’t even done yet,
-            and all the little moments we’re saving for later 🥺
+            I miss the things we haven’t even done yet
+            and all the little moments we’re saving for later🥺
             <br>
             I can’t wait for the day
             distance is just a memory lol
@@ -171,11 +171,13 @@ button {
             Through the days are getting harder,
             I’m grateful that it’s you, and it’s for us!
             <br><br>
+            FEBRUARY it is! Month of LOVE uhmmm
+            <br>
             So here’s me asking you from afar...
         </div>
 
         <div class="question">
-            Will you be my Valentine?👀❤️
+            Will you be my Valentine? 👀❤️
         </div>
 
         <div class="buttons">
@@ -196,6 +198,7 @@ function goToYesPage() {
     window.location.href = "yes.html";
 }
 
+/* NO BUTTON RUNS EVERYWHERE 😈 */
 function escapeNo() {
     const noBtn = document.getElementById("no");
     const area = document.querySelector(".buttons");
