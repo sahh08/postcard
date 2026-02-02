@@ -80,18 +80,16 @@ body {
     color: #ff4d6d;
 }
 
-/* LETTER MESSAGE (NO BORDER NOW) */
+/* LETTER MESSAGE */
 .message {
     margin-top: 90px;
     font-size: 18px;
     color: #555;
     line-height: 1.9;
     text-align: left;
-    padding: 0;
-    border: none;
 }
 
-/* QUESTION (CENTERED) */
+/* QUESTION */
 .question {
     margin-top: 32px;
     font-size: 22px;
@@ -100,11 +98,11 @@ body {
     text-align: center;
 }
 
-/* BUTTON AREA (CENTERED + BIGGER AREA) */
+/* BUTTON AREA */
 .buttons {
     margin-top: 35px;
     position: relative;
-    height: 140px;          /* bigger playground */
+    height: 160px;          /* bigger playground */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,6 +126,11 @@ button {
 #no {
     background: #ddd;
     position: absolute;
+
+    /* ✅ START POSITION (VISIBLE) */
+    left: 55%;
+    top: 55%;
+    transform: translate(-50%, -50%);
 }
 
 /* MOBILE */
@@ -157,13 +160,21 @@ button {
         <div class="message">
             Hii love 💜  
             <br><br>
-            I miss you :(  
+            FEBRUARY it is! Month of LOVE uhmmm
             <br>
-            Even with the distance,
-            you’ve become such an important part of my life!
+             I know we’ll not be able to celebrate this time,
+        and that’s okay (not really) 
+        <br>
+        We don’t need a special day
+        to celebrate what we have ig
+        <br>
+        For me and for you, the day will obviously be the day we meet :)
+       <br>
+        That will always be our best day fs!
+        
             <br><br>
             I miss the things we haven’t even done yet
-            and all the little moments we’re saving for later🥺
+            and all the little moments we’re saving for later 🥺
             <br>
             I can’t wait for the day
             distance is just a memory lol
@@ -171,8 +182,6 @@ button {
             Through the days are getting harder,
             I’m grateful that it’s you, and it’s for us!
             <br><br>
-            FEBRUARY it is! Month of LOVE uhmmm
-            <br>
             So here’s me asking you from afar...
         </div>
 
@@ -198,19 +207,21 @@ function goToYesPage() {
     window.location.href = "yes.html";
 }
 
-/* NO BUTTON RUNS EVERYWHERE 😈 */
+/* NO BUTTON ESCAPES EVERYWHERE 😈 */
 function escapeNo() {
     const noBtn = document.getElementById("no");
     const area = document.querySelector(".buttons");
 
-    const maxX = area.clientWidth - noBtn.offsetWidth;
-    const maxY = area.clientHeight - noBtn.offsetHeight;
+    const padding = 10;
+    const maxX = area.clientWidth - noBtn.offsetWidth - padding;
+    const maxY = area.clientHeight - noBtn.offsetHeight - padding;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const randomX = Math.random() * maxX + padding;
+    const randomY = Math.random() * maxY + padding;
 
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
+    noBtn.style.transform = "none";
 }
 </script>
 
